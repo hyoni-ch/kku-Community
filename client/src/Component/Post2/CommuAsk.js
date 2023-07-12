@@ -1,15 +1,13 @@
-import React, { useState, useEffect } from 'react'
-import '../../App.css';
+import React, { useState, useEffect } from "react";
+import "../../App.css";
 import { Link } from "react-router-dom";
-import AskList from './AskList';
+import AskList from "./AskList";
 import axios from "axios";
 import { DropdownButton, Dropdown } from "react-bootstrap";
 import { GNBDiv, FooterDiv } from "../../Style/CommuCSS.js";
-import { HiSearch } from "react-icons/hi"
-
+import { HiSearch } from "react-icons/hi";
 
 function CommuAsk(props) {
-
   const [PostList, setPostList] = useState([]);
   const [Sort, setSort] = useState("최신순");
   const [SearchTerm, setSearchTerm] = useState("");
@@ -20,11 +18,11 @@ function CommuAsk(props) {
     let body = {
       sort: Sort,
       searchTerm: SearchTerm,
-      skip: Skip,
+      skip: Skip
     };
     axios
       .post("/api/ask/list", body)
-      .then((response) => {
+      .then(response => {
         if (response.data.success) {
           setPostList([...PostList, ...response.data.postList]);
           setSkip(Skip + response.data.postList.length);
@@ -33,7 +31,7 @@ function CommuAsk(props) {
           }
         }
       })
-      .catch((err) => {
+      .catch(err => {
         console.log(err);
       });
   };
@@ -44,12 +42,12 @@ function CommuAsk(props) {
     let body = {
       sort: Sort,
       searchTerm: SearchTerm,
-      skip: 0,
+      skip: 0
     };
 
     axios
       .post("/api/ask/list", body)
-      .then((response) => {
+      .then(response => {
         if (response.data.success) {
           setPostList([...response.data.postList]);
           setSkip(response.data.postList.length);
@@ -61,7 +59,7 @@ function CommuAsk(props) {
           }
         }
       })
-      .catch((err) => {
+      .catch(err => {
         console.log(err);
       });
   };
@@ -76,7 +74,9 @@ function CommuAsk(props) {
   return (
     <div className="main clear">
       <p className="listTitle">궁금해요</p>
-      <Link to="/AskUpload"><button className="writeBtn">글쓰기</button></Link>
+      <Link to="/AskUpload">
+        <button className="writeBtn">글쓰기</button>
+      </Link>
 
       <GNBDiv>
         <div className="search">
@@ -84,8 +84,8 @@ function CommuAsk(props) {
             type="text"
             value={SearchTerm}
             placeholder="제목+내용"
-            onChange={(e) => setSearchTerm(e.currentTarget.value)}
-            onKeyDown={(e) => {
+            onChange={e => setSearchTerm(e.currentTarget.value)}
+            onKeyDown={e => {
               if (e.keyCode === 13) SearchHandler();
             }}
           />
@@ -115,7 +115,7 @@ function CommuAsk(props) {
         </FooterDiv>
       )}
     </div>
-  )
+  );
 }
 
-export default CommuAsk
+export default CommuAsk;

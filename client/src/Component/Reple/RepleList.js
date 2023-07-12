@@ -9,9 +9,9 @@ function RepleList(props) {
 
   useEffect(() => {
     let body = {
-      postId: props.postId,
+      postId: props.postId
     };
-    axios.post("/api/reple/getReple", body).then((response) => {
+    axios.post("/api/reple/getReple", body).then(response => {
       if (response.data.success) {
         setrepleList([...response.data.repleList]);
       }

@@ -1,5 +1,5 @@
-import React from 'react'
-import { Form } from 'react-bootstrap';
+import React from "react";
+import { Form } from "react-bootstrap";
 import axios from "axios";
 
 function AskImageUpload(props) {
@@ -10,24 +10,24 @@ function AskImageUpload(props) {
     4. 경로를 받아서 post model에 저장
   */
 
-    const FileUpload = (e) => {
-      var formData = new FormData();
-      formData.append("file", e.target.files[0]);
-      axios.post("/api/ask/image/upload", formData).then((response) => {
-        props.setImage(response.data.filePath);
-      });
-    };
+  const FileUpload = e => {
+    var formData = new FormData();
+    formData.append("file", e.target.files[0]);
+    axios.post("/api/ask/image/upload", formData).then(response => {
+      props.setImage(response.data.filePath);
+    });
+  };
 
-   return (
+  return (
     <div>
       <Form.Control
         type="file"
         className="shadow-none"
         accept="image/*"
-        onChange={(e) => FileUpload(e)}
+        onChange={e => FileUpload(e)}
       />
     </div>
-  )
+  );
 }
 
-export default AskImageUpload
+export default AskImageUpload;

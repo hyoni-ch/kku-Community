@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react'
-import '../../App.css';
+import React, { useState, useEffect } from "react";
+import "../../App.css";
 import { Link } from "react-router-dom";
-import List from './List';
+import List from "./List";
 import axios from "axios";
 import { DropdownButton, Dropdown } from "react-bootstrap";
 import { GNBDiv, FooterDiv } from "../../Style/CommuCSS.js";
-import { HiSearch } from "react-icons/hi"
+import { HiSearch } from "react-icons/hi";
 
 function CommuWalk() {
   const [PostList, setPostList] = useState([]);
@@ -18,11 +18,11 @@ function CommuWalk() {
     let body = {
       sort: Sort,
       searchTerm: SearchTerm,
-      skip: Skip,
+      skip: Skip
     };
     axios
       .post("/api/post/list", body)
-      .then((response) => {
+      .then(response => {
         if (response.data.success) {
           setPostList([...PostList, ...response.data.postList]);
           setSkip(Skip + response.data.postList.length);
@@ -31,7 +31,7 @@ function CommuWalk() {
           }
         }
       })
-      .catch((err) => {
+      .catch(err => {
         console.log(err);
       });
   };
@@ -42,12 +42,12 @@ function CommuWalk() {
     let body = {
       sort: Sort,
       searchTerm: SearchTerm,
-      skip: 0,
+      skip: 0
     };
 
     axios
       .post("/api/post/list", body)
-      .then((response) => {
+      .then(response => {
         if (response.data.success) {
           setPostList([...response.data.postList]);
           setSkip(response.data.postList.length);
@@ -59,7 +59,7 @@ function CommuWalk() {
           }
         }
       })
-      .catch((err) => {
+      .catch(err => {
         console.log(err);
       });
   };
@@ -73,18 +73,20 @@ function CommuWalk() {
   };
 
   return (
-    <div className="main"> 
+    <div className="main">
       <p className="listTitle">산책해요</p>
-      <Link to="/upload"><button className="writeBtn">글쓰기</button></Link>
-        
+      <Link to="/upload">
+        <button className="writeBtn">글쓰기</button>
+      </Link>
+
       <GNBDiv>
         <div className="search">
           <input
             type="text"
             value={SearchTerm}
             placeholder="제목+내용+지역"
-            onChange={(e) => setSearchTerm(e.currentTarget.value)}
-            onKeyDown={(e) => {
+            onChange={e => setSearchTerm(e.currentTarget.value)}
+            onKeyDown={e => {
               if (e.keyCode === 13) SearchHandler();
             }}
           />
@@ -114,7 +116,7 @@ function CommuWalk() {
         </FooterDiv>
       )}
     </div>
-  )
+  );
 }
 
-export default CommuWalk
+export default CommuWalk;

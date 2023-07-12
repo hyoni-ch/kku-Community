@@ -1,11 +1,7 @@
-import React from 'react'
+import React from "react";
 
 function Section3() {
-  return (
-    <div>
-      
-    </div>
-  )
+  return <div></div>;
 }
 
-export default Section3
+export default Section3;

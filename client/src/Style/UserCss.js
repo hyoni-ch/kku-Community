@@ -27,20 +27,20 @@ const LoginDiv = styled.div`
       }
     }
     button {
-        border-radius: 15px;
-        padding: 5px 10px;
-        background-color: #E2CBB7;
-        color: white;
-        border: 1px solid #E2CBB7;
-        margin-top: 10px;
-        &:hover {
-          background-color: white;
-          color: black;
-          border: 1px solide black;
-        }
+      border-radius: 15px;
+      padding: 5px 10px;
+      background-color: #e2cbb7;
+      color: white;
+      border: 1px solid #e2cbb7;
+      margin-top: 10px;
+      &:hover {
+        background-color: white;
+        color: black;
+        border: 1px solide black;
+      }
     }
     @media (max-width: 756px) {
-        width: 100%;
+      width: 100%;
     }
   }
 `;

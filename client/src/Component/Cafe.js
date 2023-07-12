@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from 'react'
-import '../App.css';
-import CafeList from '../Component/Cafe/CafePost/CafeList';
+import React, { useState, useEffect } from "react";
+import "../App.css";
+import CafeList from "../Component/Cafe/CafePost/CafeList";
 import axios from "axios";
 import { DropdownButton, Dropdown } from "react-bootstrap";
 import { GNBDiv, FooterDiv } from "../Style/CommuCSS.js";
-import { HiSearch } from "react-icons/hi"
-
+import { HiSearch } from "react-icons/hi";
 
 function Cafe() {
   const [CafePostList, setCafePostList] = useState([]);
@@ -18,11 +17,11 @@ function Cafe() {
     let body = {
       sort: Sort,
       searchTerm: SearchTerm,
-      skip: Skip,
+      skip: Skip
     };
     axios
       .post("/api/cafe/list", body)
-      .then((response) => {
+      .then(response => {
         if (response.data.success) {
           setCafePostList([...CafePostList, ...response.data.cafePostList]);
           setSkip(Skip + response.data.cafePostList.length);
@@ -31,7 +30,7 @@ function Cafe() {
           }
         }
       })
-      .catch((err) => {
+      .catch(err => {
         console.log(err);
       });
   };
@@ -42,12 +41,12 @@ function Cafe() {
     let body = {
       sort: Sort,
       searchTerm: SearchTerm,
-      skip: 0,
+      skip: 0
     };
 
     axios
       .post("/api/cafe/list", body)
-      .then((response) => {
+      .then(response => {
         if (response.data.success) {
           setCafePostList([...response.data.cafePostList]);
           setSkip(response.data.cafePostList.length);
@@ -59,7 +58,7 @@ function Cafe() {
           }
         }
       })
-      .catch((err) => {
+      .catch(err => {
         console.log(err);
       });
   };
@@ -73,15 +72,15 @@ function Cafe() {
   };
 
   return (
-    <div className="main"> 
+    <div className="main">
       <GNBDiv>
         <div className="search">
           <input
             type="text"
             value={SearchTerm}
             placeholder="지역"
-            onChange={(e) => setSearchTerm(e.currentTarget.value)}
-            onKeyDown={(e) => {
+            onChange={e => setSearchTerm(e.currentTarget.value)}
+            onKeyDown={e => {
               if (e.keyCode === 13) SearchHandler();
             }}
           />
@@ -111,7 +110,7 @@ function Cafe() {
         </FooterDiv>
       )}
     </div>
-  )
+  );
 }
 
-export default Cafe
+export default Cafe;

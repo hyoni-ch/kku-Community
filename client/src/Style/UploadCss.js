@@ -1,5 +1,4 @@
-import styled from '@emotion/styled'
-
+import styled from "@emotion/styled";
 
 const UploadForm = styled.form`
   width: 80%;
@@ -14,7 +13,7 @@ const UploadForm = styled.form`
     margin-bottom: 10px;
     &:active,
     &:focus {
-        outline: none;
+      outline: none;
     }
   }
   textarea {
@@ -25,21 +24,21 @@ const UploadForm = styled.form`
     border-radius: 10px;
     &:active,
     &:focus {
-        outline: none;
+      outline: none;
     }
     &::-webkit-scrollbar {
-        width: 10px;
+      width: 10px;
     }
     &::-webkit-scrollbar-thumb {
-        background-color: gray;
-        border-radius: 15px;
-        background-colip: padding-box;
-        border: 2px solid transparent;
+      background-color: gray;
+      border-radius: 15px;
+      background-colip: padding-box;
+      border: 2px solid transparent;
     }
     &::-webkit-scrollbar {
-        background-color: lightgray;
-        border-radius: 15px;
-        box-shadow: inset 0px 0px 5px whitesmoke;
+      background-color: lightgray;
+      border-radius: 15px;
+      box-shadow: inset 0px 0px 5px whitesmoke;
     }
   }
   label {
@@ -55,7 +54,7 @@ const UploadButtonDiv = styled.div`
   button {
     padding: 10px;
     width: 80px;
-    background-color: #E2CBB7;
+    background-color: #e2cbb7;
     border: none;
     border-radius: 20px;
     color: black;
@@ -66,14 +65,12 @@ const UploadButtonDiv = styled.div`
       margin-right: 10px;
       background-color: white;
       color: black;
-      border: 1px solid #E2CBB7;
+      border: 1px solid #e2cbb7;
       &:hover {
-        background-color: #E2CBB7;
+        background-color: #e2cbb7;
       }
     }
   }
 `;
-
-
 
 export { UploadButtonDiv, UploadForm };

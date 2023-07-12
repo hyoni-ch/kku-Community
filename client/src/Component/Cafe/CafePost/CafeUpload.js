@@ -1,12 +1,11 @@
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom';
-import { UploadForm, UploadButtonDiv } from "../../../Style/CafeUploadCss"
-import axios from "axios"
-import "../../../App.css"
-import CafeImageUpload from './CafeImageUpload.js';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { UploadForm, UploadButtonDiv } from "../../../Style/CafeUploadCss";
+import axios from "axios";
+import "../../../App.css";
+import CafeImageUpload from "./CafeImageUpload.js";
 
 function CafeUpload() {
-
   const [Name, setName] = useState("");
   const [Address, setAddress] = useState("");
   const [Time, setTime] = useState("");
@@ -16,50 +15,48 @@ function CafeUpload() {
 
   let navigate = useNavigate();
 
-  const onSubmit = (e) => {
+  const onSubmit = e => {
     e.preventDefault();
-    if(Name === "" || Address === "") {
-        return alert("카페 이름과 주소를 넣어주세요.");
+    if (Name === "" || Address === "") {
+      return alert("카페 이름과 주소를 넣어주세요.");
     }
 
     let body = {
-        name: Name,
-        address: Address,
-        time: Time,
-        phone: Phone,
-        other: Other,
-        image: Image,
-    }
+      name: Name,
+      address: Address,
+      time: Time,
+      phone: Phone,
+      other: Other,
+      image: Image
+    };
 
-    axios.post("/api/cafe/submit", body).then((response) => {
-        if(response.data.success) {
-            alert("글 작성이 완료되었습니다.");
-            navigate("/cafe");
+    axios
+      .post("/api/cafe/submit", body)
+      .then(response => {
+        if (response.data.success) {
+          alert("글 작성이 완료되었습니다.");
+          navigate("/cafe");
+        } else {
+          alert("글 작성에 실패하였습니다.");
         }
-        else {
-            alert("글 작성에 실패하였습니다.");
-        }
-    })
-    .catch((err) => {
+      })
+      .catch(err => {
         console.log(err);
-    })
-  }
+      });
+  };
 
   return (
     <div className="main">
-
-
       <UploadForm>
-
         <h4>카페 업로드</h4>
 
-        <CafeImageUpload setImage = {setImage} />
+        <CafeImageUpload setImage={setImage} />
 
         <label htmlFor="name">이름</label>
         <textarea
           id="name"
           value={Name}
-          onChange={(e) => {
+          onChange={e => {
             setName(e.currentTarget.value);
           }}
         />
@@ -68,7 +65,7 @@ function CafeUpload() {
         <textarea
           id="address"
           value={Address}
-          onChange={(e) => {
+          onChange={e => {
             setAddress(e.currentTarget.value);
           }}
         />
@@ -77,7 +74,7 @@ function CafeUpload() {
         <textarea
           id="time"
           value={Time}
-          onChange={(e) => {
+          onChange={e => {
             setTime(e.currentTarget.value);
           }}
         />
@@ -86,7 +83,7 @@ function CafeUpload() {
         <textarea
           id="phone"
           value={Phone}
-          onChange={(e) => {
+          onChange={e => {
             setPhone(e.currentTarget.value);
           }}
         />
@@ -95,23 +92,24 @@ function CafeUpload() {
         <textarea
           id="other"
           value={Other}
-          onChange={(e) => {
+          onChange={e => {
             setOther(e.currentTarget.value);
           }}
         />
 
         <UploadButtonDiv>
           <button
-            onClick={(e) => {
+            onClick={e => {
               onSubmit(e);
             }}
-          > 저장 </button>
+          >
+            {" "}
+            저장{" "}
+          </button>
         </UploadButtonDiv>
-        
-
       </UploadForm>
     </div>
-  )
+  );
 }
 
-export default CafeUpload
+export default CafeUpload;

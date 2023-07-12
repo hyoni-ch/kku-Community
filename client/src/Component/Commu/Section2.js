@@ -1,11 +1,7 @@
-import React from 'react'
+import React from "react";
 
 function Sectoin2() {
-  return (
-    <div>
-      
-    </div>
-  )
+  return <div></div>;
 }
 
-export default Sectoin2
+export default Sectoin2;

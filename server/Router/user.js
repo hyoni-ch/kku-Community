@@ -40,7 +40,6 @@ router.post("/namecheck", (req, res) => {
     });
 });
 
-
 // router.post(
 //   "/profile/img",
 //   setUpload("community-project/user"),

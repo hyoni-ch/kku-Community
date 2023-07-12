@@ -1,13 +1,12 @@
-import React, { useState, useEffect } from 'react'
-import "../../App.css"
-import { LoginDiv } from '../../Style/UserCss';
-import firebase from '../../firebase';
-import axios from "axios"
+import React, { useState, useEffect } from "react";
+import "../../App.css";
+import { LoginDiv } from "../../Style/UserCss";
+import firebase from "../../firebase";
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from 'react-redux';
+import { useSelector } from "react-redux";
 
 function Register() {
-
   const [Name, setName] = useState("");
   const [Email, setEmail] = useState("");
   const [PW, setPW] = useState("");
@@ -16,18 +15,18 @@ function Register() {
   const [NameCheck, setNameCheck] = useState(false);
   const [NameInfo, setNameInfo] = useState("");
 
-  const user = useSelector((state) => state.user);
+  const user = useSelector(state => state.user);
 
   let navigate = useNavigate();
 
   useEffect(() => {
-    if(user.accessToken) {
+    if (user.accessToken) {
       alert("로그인이 되어있습니다.");
       navigate("/");
     }
   }, []);
 
-  const RegisterFunc = async (e) => {
+  const RegisterFunc = async e => {
     setFlag(true);
     e.preventDefault();
 
@@ -41,24 +40,24 @@ function Register() {
       return alert("닉네임 중복검사를 해주세요.");
     }
 
-
     let createdUser = await firebase
       .auth()
       .createUserWithEmailAndPassword(Email, PW);
 
-      await createdUser.user.updateProfile({
-        displayName: Name,
-        photoURL: "https://kr.object.ncloudstorage.com/react-community/user/profile.png",
-      });
+    await createdUser.user.updateProfile({
+      displayName: Name,
+      photoURL:
+        "https://kr.object.ncloudstorage.com/react-community/user/profile.png"
+    });
 
-  
     let body = {
-      email : createdUser.user.multiFactor.user.email,
-      displayName : createdUser.user.multiFactor.user.displayName,
-      uid : createdUser.user.multiFactor.user.uid,
-      photoURL: "https://kr.object.ncloudstorage.com/react-community/user/profile.png",
+      email: createdUser.user.multiFactor.user.email,
+      displayName: createdUser.user.multiFactor.user.displayName,
+      uid: createdUser.user.multiFactor.user.uid,
+      photoURL:
+        "https://kr.object.ncloudstorage.com/react-community/user/profile.png"
     };
-    axios.post("/api/user/register", body).then((response) => {
+    axios.post("/api/user/register", body).then(response => {
       setFlag(false);
       if (response.data.success) {
         //회원가입 성공시
@@ -71,16 +70,16 @@ function Register() {
     });
   };
 
-  const NameCheckFunc = (e) => {
+  const NameCheckFunc = e => {
     e.preventDefault();
-    if(!Name) {
+    if (!Name) {
       return alert("닉네임을 입력해주세요.");
     }
     let body = {
-      displayName : Name,
+      displayName: Name
     };
-    axios.post("/api/user/namecheck", body).then((response) => {
-      if(response.data.success) {
+    axios.post("/api/user/namecheck", body).then(response => {
+      if (response.data.success) {
         if (response.data.check) {
           setNameCheck(true);
           setNameInfo("사용 가능한 닉네임입니다.");
@@ -91,8 +90,6 @@ function Register() {
     });
   };
 
-
-
   return (
     <div className="main">
       <LoginDiv>
@@ -101,16 +98,21 @@ function Register() {
           <input
             type="name"
             value={Name}
-            onChange={(e) => setName(e.currentTarget.value)}
+            onChange={e => setName(e.currentTarget.value)}
             disabled={NameCheck}
           />
           {NameInfo}
-          <button onClick={(e) => NameCheckFunc(e)} style={{marginBottom:'10px'}}>닉네임 중복검사</button>
+          <button
+            onClick={e => NameCheckFunc(e)}
+            style={{ marginBottom: "10px" }}
+          >
+            닉네임 중복검사
+          </button>
           <label>이메일</label>
           <input
             type="email"
             value={Email}
-            onChange={(e) => setEmail(e.currentTarget.value)}
+            onChange={e => setEmail(e.currentTarget.value)}
           />
           <label>비밀번호</label>
           <input
@@ -118,21 +120,22 @@ function Register() {
             value={PW}
             minLength={8}
             placeholder="8글자 이상 입력해주세요"
-            onChange={(e) => setPW(e.currentTarget.value)}
+            onChange={e => setPW(e.currentTarget.value)}
           />
           <label>비밀번호 확인</label>
           <input
             type="password"
             value={PWConfirm}
             minLength={8}
-            onChange={(e) => setPWConfirm(e.currentTarget.value)}
+            onChange={e => setPWConfirm(e.currentTarget.value)}
           />
-          <button disabled={Flag} onClick={(e) => RegisterFunc(e)}>회원가입</button>
+          <button disabled={Flag} onClick={e => RegisterFunc(e)}>
+            회원가입
+          </button>
         </form>
       </LoginDiv>
-      
     </div>
-  )
+  );
 }
 
-export default Register
+export default Register;

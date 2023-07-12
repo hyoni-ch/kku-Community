@@ -28,7 +28,6 @@ const ListItem = styled.div`
     margin-top: 10px;
     margin-bottom: 10px;
     text-align: center;
-    
   }
   .address {
     height: 8vh;
@@ -38,7 +37,7 @@ const ListItem = styled.div`
     text-decoration: none;
     text-align: center;
     .title {
-        font-weight: bold;
+      font-weight: bold;
     }
   }
   @media (max-width: 1280px) {
@@ -52,7 +51,6 @@ const ListItem = styled.div`
 const Item = styled.div`
   display: flex;
   justify-content: flex-end;
- 
 `;
 
 export { ListDiv, ListItem, Item };

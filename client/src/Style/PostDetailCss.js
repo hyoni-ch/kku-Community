@@ -6,7 +6,7 @@ const PostDiv = styled.div`
   max-width: 960px;
   margin: 0 auto !important;
   @media (max-width: 960px) {
-    width: 90%
+    width: 90%;
   }
 `;
 
@@ -76,16 +76,16 @@ const BtnDiv = styled.div`
     }
     &.delete {
       margin-left: 10px;
-      background-color: #E2CBB7;
+      background-color: #e2cbb7;
       color: white;
-      border: 1px solid #E2CBB7;
+      border: 1px solid #e2cbb7;
       &:hover {
         background-color: white;
-        color: #E2CBB7;
-        border: 1px solid #E2CBB7;
+        color: #e2cbb7;
+        border: 1px solid #e2cbb7;
       }
     }
   }
 `;
 
-export {PostDiv, SpinnerDiv, Post, BtnDiv};
+export { PostDiv, SpinnerDiv, Post, BtnDiv };

@@ -12,7 +12,7 @@ function RepleContent(props) {
   const [EdifFlag, setEdifFlag] = useState(false);
   const [Reple, setReple] = useState(props.reple.reple);
 
-  const user = useSelector((state) => state.user);
+  const user = useSelector(state => state.user);
   const ref = useRef();
   useOnClickOutside(ref, () => setModalFlag(false));
 
@@ -24,16 +24,16 @@ function RepleContent(props) {
     }
   };
 
-  const SubmitHandler = (e) => {
+  const SubmitHandler = e => {
     e.preventDefault();
     let body = {
       uid: user.uid,
       reple: Reple,
       postId: props.reple.postId,
-      repleId: props.reple._id,
+      repleId: props.reple._id
     };
 
-    axios.post("/api/reple/edit", body).then((response) => {
+    axios.post("/api/reple/edit", body).then(response => {
       if (response.data.success) {
         alert("댓글 수정이 성공하였습니다.");
       } else {
@@ -43,22 +43,22 @@ function RepleContent(props) {
     });
   };
 
-  const DeleteHandler = (e) => {
+  const DeleteHandler = e => {
     e.preventDefault();
     if (window.confirm("정말로 삭제하시겠습니까?")) {
       let body = {
         repleId: props.reple._id,
-        postId: props.reple.postId,
+        postId: props.reple.postId
       };
       axios
         .post("/api/reple/delete", body)
-        .then((response) => {
+        .then(response => {
           if (response.data.success) {
             alert("댓글이 삭제되었습니다.");
             window.location.reload();
           }
         })
-        .catch((err) => {
+        .catch(err => {
           alert("댓글 삭제에 실패하였습니다.");
         });
     }
@@ -89,7 +89,7 @@ function RepleContent(props) {
                 >
                   수정
                 </p>
-                <p className="delete" onClick={(e) => DeleteHandler(e)}>
+                <p className="delete" onClick={e => DeleteHandler(e)}>
                   삭제
                 </p>
               </div>
@@ -106,12 +106,12 @@ function RepleContent(props) {
             <input
               type="text"
               value={Reple}
-              onChange={(e) => {
+              onChange={e => {
                 setReple(e.currentTarget.value);
               }}
             />
             <button
-              onClick={(e) => {
+              onClick={e => {
                 SubmitHandler(e);
               }}
             >
@@ -120,7 +120,7 @@ function RepleContent(props) {
           </form>
           <div className="cancel">
             <button
-              onClick={(e) => {
+              onClick={e => {
                 e.preventDefault();
                 setEdifFlag(false);
               }}
@@ -138,7 +138,7 @@ function RepleContent(props) {
 
 function useOnClickOutside(ref, handler) {
   useEffect(() => {
-    const listener = (event) => {
+    const listener = event => {
       if (!ref.current || ref.current.contains(event.target)) {
         return;
       }

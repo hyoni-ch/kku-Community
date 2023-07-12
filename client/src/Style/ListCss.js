@@ -53,10 +53,9 @@ const ListItem = styled.div`
     color: black;
     text-decoration: none;
     .title {
-        font-weight: bold;
+      font-weight: bold;
     }
   }
 `;
 
 export { ListDiv, ListItem };
-

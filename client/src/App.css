@@ -4,7 +4,7 @@
 }
 
 a:hover {
-  color: #E2CBB7;
+  color: #e2cbb7;
 }
 
 a {
@@ -17,7 +17,7 @@ ul {
 }
 
 .clear::after {
-  content: '';
+  content: "";
   display: block;
   clear: both;
 }
@@ -49,11 +49,11 @@ ul {
   font-weight: bold;
   position: absolute;
   left: 100px;
-  top: 10px; 
+  top: 10px;
 }
 
 .writeBtn {
-  background: #E2CBB7;
+  background: #e2cbb7;
   border: none;
   color: #fff;
   cursor: pointer;
@@ -68,8 +68,7 @@ ul {
 }
 
 .writeBtn:hover {
-  box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.03),
-    0px 5px 5px rgba(0, 0, 0, 0.03);
+  box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.03), 0px 5px 5px rgba(0, 0, 0, 0.03);
 }
 
 @media screen and (max-width: 1280px) {

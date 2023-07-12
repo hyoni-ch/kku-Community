@@ -6,7 +6,7 @@ const PostDiv = styled.div`
   max-width: 960px;
   margin: 0 auto !important;
   @media (max-width: 960px) {
-    width: 90%
+    width: 90%;
   }
 `;
 
@@ -32,7 +32,7 @@ const Post = styled.div`
     margin-bottom: 0px;
   }
   img {
-    width: 500px;
+    width: 400px;
     height: 500px;
     line-height: 500px;
   }
@@ -68,7 +68,6 @@ const Text = styled.div`
 const Title = styled.div`
   font-weight: bold;
   width: 25%;
- 
 `;
 
 const Content = styled.div`
@@ -99,16 +98,16 @@ const BtnDiv = styled.div`
     }
     &.delete {
       margin-left: 10px;
-      background-color: #E2CBB7;
+      background-color: #e2cbb7;
       color: white;
-      border: 1px solid #E2CBB7;
+      border: 1px solid #e2cbb7;
       &:hover {
         background-color: white;
-        color: #E2CBB7;
-        border: 1px solid #E2CBB7;
+        color: #e2cbb7;
+        border: 1px solid #e2cbb7;
       }
     }
   }
 `;
 
-export {PostDiv, SpinnerDiv, Post, BtnDiv, Text, TextDiv, Title, Content};
+export { PostDiv, SpinnerDiv, Post, BtnDiv, Text, TextDiv, Title, Content };

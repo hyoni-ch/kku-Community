@@ -9,9 +9,9 @@ function CommentList(props) {
 
   useEffect(() => {
     let body = {
-      cafePostId: props.cafePostId,
+      cafePostId: props.cafePostId
     };
-    axios.post("/api/comment/getComment", body).then((response) => {
+    axios.post("/api/comment/getComment", body).then(response => {
       if (response.data.success) {
         setcommentList([...response.data.commentList]);
       }

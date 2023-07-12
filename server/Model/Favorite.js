@@ -1,16 +1,18 @@
 const mongoose = require("mongoose");
 
-const favoriteSchema = new mongoose.Schema({
-  userFrom: {
-    type: String,
-    ref: "User",
+const favoriteSchema = new mongoose.Schema(
+  {
+    userFrom: {
+      type: String,
+      ref: "User",
+    },
+    cafePostId: Number,
+    name: String,
+    address: String,
+    image: String,
   },
-  cafePostId: Number,
-  name: String,
-  address: String,
-  image: String,
-  
-}, { collection : "favorites"});
+  { collection: "favorites" }
+);
 
 const Favorite = mongoose.model("Favorite", favoriteSchema);
 

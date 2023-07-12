@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import MainImg1 from '../../../img/main-img.jpg'
+import MainImg1 from "../../../img/main-img.jpg";
 
 export const Div = styled.div`
   width: 100%;
@@ -27,7 +27,6 @@ export const Wrapper = styled.div`
   padding: 0 20px;
   align-items: center;
   display: flex;
-  
 `;
 
 export const TextDiv = styled.div`
@@ -41,7 +40,6 @@ export const TextDiv = styled.div`
   @media (max-width: 400px) {
     margin-left: 13%;
   }
-  
 `;
 
 export const Text = styled.div`
@@ -59,7 +57,6 @@ export const Text = styled.div`
   @media (max-width: 400px) {
     font-size: 1.5rem;
   }
-  
 `;
 
 export const GoButton = styled.button`
@@ -88,4 +85,3 @@ export const GoButton = styled.button`
     margin-top: 15%;
   }
 `;
-

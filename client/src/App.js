@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react'
-import './App.css';
+import React, { useEffect } from "react";
+import "./App.css";
 import { Routes, Route } from "react-router-dom";
 
 import { useDispatch } from "react-redux";
-import { loginUser, clearUser } from './Reducer/userSlice';
-import firebase from "./firebase"
+import { loginUser, clearUser } from "./Reducer/userSlice";
+import firebase from "./firebase";
 
 import Header from "./Component/Header";
 import Footer from "./Component/Footer";
@@ -29,20 +29,17 @@ import Cafe from "./Component/Cafe";
 import CafeUpload from "./Component/Cafe/CafePost/CafeUpload";
 import CafePostArea from "./Component/Cafe/CafePost/CafePostArea";
 
-import FavoritePage from './Component/Cafe/Favorite/FavoritePage';
-
+import FavoritePage from "./Component/Cafe/Favorite/FavoritePage";
 
 import Login from "./Component/User/Login";
 import Register from "./Component/User/Register";
 
-
 function App() {
-
   const dispatch = useDispatch();
 
   useEffect(() => {
-    firebase.auth().onAuthStateChanged((userInfo) => {
-      if(userInfo !== null) {
+    firebase.auth().onAuthStateChanged(userInfo => {
+      if (userInfo !== null) {
         dispatch(loginUser(userInfo.multiFactor.user));
       } else {
         dispatch(clearUser());
@@ -74,12 +71,11 @@ function App() {
         <Route path="/cafe" element={<Cafe />} />
         <Route path="/cafeUpload" element={<CafeUpload />} />
         <Route path="/cafe/:cafePostNum" element={<CafePostArea />} />
-        
+
         <Route path="/favorite" element={<FavoritePage />} />
 
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-
       </Routes>
       <Footer />
     </div>

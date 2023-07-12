@@ -7,7 +7,7 @@ import firebase from "../../firebase.js";
 import { MyPageDiv } from "../../Style/UserCss";
 
 function MyPage() {
-  const user = useSelector((state) => state.user);
+  const user = useSelector(state => state.user);
   const navigate = useNavigate();
 
   const [CurrentImage, setCurrentImage] = useState("");
@@ -20,28 +20,28 @@ function MyPage() {
     }
   }, [user]);
 
-  const ImageUpload = (e) => {
+  const ImageUpload = e => {
     var formData = new FormData();
     formData.append("file", e.target.files[0]);
-    axios.post("/api/user/profile/img", formData).then((response) => {
+    axios.post("/api/user/profile/img", formData).then(response => {
       setCurrentImage(response.data.filePath);
     });
   };
 
-  const SaveProfile = async (e) => {
+  const SaveProfile = async e => {
     e.preventDefault();
     try {
       await firebase.auth().currentUser.updateProfile({
-        photoURL: CurrentImage,
+        photoURL: CurrentImage
       });
     } catch (error) {
       return alert("프로필 저장에 실패하였습니다.");
     }
     let body = {
       photoURL: CurrentImage,
-      uid: user.uid,
+      uid: user.uid
     };
-    axios.post("/api/user/profile/update", body).then((response) => {
+    axios.post("/api/user/profile/update", body).then(response => {
       if (response.data.success) {
         alert("프로필 저장에 성공하였습니다.");
         window.location.reload();
@@ -60,7 +60,7 @@ function MyPage() {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          marginTop: "2rem",
+          marginTop: "2rem"
         }}
       >
         <label>
@@ -68,7 +68,7 @@ function MyPage() {
             type="file"
             accept="image/*"
             style={{ display: "none" }}
-            onChange={(e) => ImageUpload(e)}
+            onChange={e => ImageUpload(e)}
           />
           <Avatar
             size="100"
@@ -77,7 +77,7 @@ function MyPage() {
             style={{ border: "1px solid #c6c6c6", cursor: "pointer" }}
           />
         </label>
-        <button onClick={(e) => SaveProfile(e)}>저장</button>
+        <button onClick={e => SaveProfile(e)}>저장</button>
       </form>
     </MyPageDiv>
   );
