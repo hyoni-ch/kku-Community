@@ -5,7 +5,6 @@ const app = express();
 const port = 5000;
 const config = require("./config/key.js");
 
-//mongodb+srv://admin:1234@cluster0.9cokxxa.mongodb.net/?retryWrites=true&w=majority
 
 app.use(express.static(path.join(__dirname, "../client/build")));
 app.use("/image", express.static("./image"));
